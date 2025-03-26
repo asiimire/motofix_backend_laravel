@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('fuel_types', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->decimal('price_per_litre', 8, 2); // 8 digits total, 2 decimal places
+            $table->foreignId('fuel_station_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
